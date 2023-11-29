@@ -1,23 +1,98 @@
-import logo from './logo.svg';
-import './App.css';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Header from "./components/Header";
+import Error from "./components/Error";
+import AddProducts from "./components/AddProducts";
+import Contact from "./components/Contact";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Home from "./components/Home";
+import Logout from "./components/Logout";
+import PrivateComponent from "./PrivateRoutes/PrivateComponent";
+import Slider from "./components/Slider";
+import ProductList from "./components/ProductList";
+import ProductDetails from "./components/ProductDetails";
+
+
+
+const AppRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <PrivateComponent>
+        <Slider />
+      </PrivateComponent>
+    ),
+    errorElement:<Error/>,
+    children:[
+      {
+        
+          path: "/",
+          element: (
+            <PrivateComponent>
+              <Home />
+            </PrivateComponent>
+          ),
+        
+      },
+      {
+        path: "/products",
+        element: (
+          <PrivateComponent>
+            <ProductList />
+          </PrivateComponent>
+        ),
+      },
+      {
+        path: "/add products",
+        element: (
+          <PrivateComponent>
+            <AddProducts />
+          </PrivateComponent>
+        ),
+      },
+      {
+        path: "/contact",
+        element: (
+          <PrivateComponent>
+            <Contact />
+          </PrivateComponent>
+        ),
+      },
+      {
+        path: "/products/:id",
+        element: (
+          <PrivateComponent>
+           <ProductDetails/>
+          </PrivateComponent>
+        ),
+      },
+    ]
+  },
+
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/logout",
+    element: (
+      <PrivateComponent>
+        <Logout />
+      </PrivateComponent>
+    ),
+  },
+]);
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <RouterProvider router={AppRouter} />
     </div>
   );
 }
