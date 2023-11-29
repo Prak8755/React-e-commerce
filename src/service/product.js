@@ -1,4 +1,3 @@
-import { json } from "react-router-dom";
 
 export const dummyProductApi = async function () {
   try {

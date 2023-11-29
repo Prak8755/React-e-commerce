@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Header from "./components/Header";
 import Error from "./components/Error";
 import AddProducts from "./components/AddProducts";
 import Contact from "./components/Contact";

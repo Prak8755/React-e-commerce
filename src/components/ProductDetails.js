@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getLocalStgProducts } from "../service/product";
-import { type } from "@testing-library/user-event/dist/type";
 
 export default function ProductDetails() {
   const [products, setProducts] = React.useState([]);
@@ -22,9 +21,11 @@ export default function ProductDetails() {
       .catch((e) => console.log(e));
   }, []);
 
-  React.useEffect(() => {
-    handleProductView();
-  }, [products]);
+//   React.useEffect(() => {
+//     handleProductView();
+//   }, [products]);
+
+handleProductView()
 
   //finding out Product with id
   function handleProductView() {

@@ -16,7 +16,6 @@ import FormAlert from "../Helper/FormAlert";
 
 const defaultTheme = createTheme();
 export default function Products() {
-  const[msg,setMsg]=React.useState(false);
 const [formMsg,setFormMsg]=React.useState({success:false,notSuccess:false});
   const [products, setProducts] = React.useState([]);
   const [inputData, setInputData] = React.useState({
